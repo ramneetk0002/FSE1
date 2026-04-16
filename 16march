@@ -1,0 +1,17 @@
+name: PR Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pr-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "PR triggered!"
+
+      - name: Print name
+        run: echo "Varnika"
