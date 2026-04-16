@@ -14,4 +14,4 @@ jobs:
         run: echo "PR triggered!"
 
       - name: Print name
-        run: echo "Varnika"
+        run: echo "ramneet"
