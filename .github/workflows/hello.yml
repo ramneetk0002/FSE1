@@ -1,13 +1,39 @@
-name: My First Workflow
-on: push 
+# name: My First Workflow
+# on: push 
 
-jobs: 
-  say-hello:
+# jobs: 
+#   say-hello:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Print message
+#         run: echo "Hello ,GitHub action!"
+#       - name: print name
+#         run: echo "ramneet"   
+
+
+name: Push Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
     runs-on: ubuntu-latest
 
     steps:
       - name: Print message
-        run: echo "Hello ,GitHub action!"
-      - name: print name
-        run: echo "ramneet"   
- 
+        run: echo "Hello"
+
+      - name: Print name
+        run: echo "Rashi"
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1  
+
+    steps:
+      - name: Second job message
+        run: echo "Job 2 running after Job 1"
