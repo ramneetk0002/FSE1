@@ -12,28 +12,50 @@
 #         run: echo "ramneet"   
 
 
-name: Push Workflow
+# name: Push Workflow
 
-on:
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Print message
+#         run: echo "Hello"
+
+#       - name: Print name
+#         run: echo "ramneet"
+
+#   job2:
+#     runs-on: ubuntu-latest
+#     needs: job1  
+
+#     steps:
+#       - name: Second job message
+#         run: echo "Job 2 running after Job 1"
+
+name: use action workflow
+
+on: 
   push:
-    branches:
-      - main
 
 jobs:
-  job1:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print message
-        run: echo "Hello"
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Print name
-        run: echo "Rashi"
+      - name: List files
+        run: ls
 
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1  
-
-    steps:
-      - name: Second job message
-        run: echo "Job 2 running after Job 1"
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        
+      - name: Print Node version
+        run: node -v
