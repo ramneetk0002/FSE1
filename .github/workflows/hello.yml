@@ -59,6 +59,33 @@
         
 #       - name: Print Node version
 #         run: node -v
+# name: use action workflow
+
+# on: 
+#   push:
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: List files
+#         run: ls
+
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+
+#       - name: Print Node version
+#         run: node -v
+
+#       - name: Install dependency
+#         run: npm install
+
+#       - name: Starting test
+#         run: npm run test
 name: use action workflow
 
 on: 
@@ -72,17 +99,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: List files
-        run: ls
-
       - name: Setup Node
         uses: actions/setup-node@v4
-
-      - name: Print Node version
-        run: node -v
 
       - name: Install dependency
         run: npm install
 
-      - name: Starting test
-        run: npm run test
+      - name: Run tests
+        run: npm test
+
+  deploy-app:
+    runs-on: ubuntu-latest
+    needs: test  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install dependency
+        run: npm install
+
+      - name: Start server
+        run: node server.js
