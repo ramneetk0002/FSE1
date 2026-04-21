@@ -38,6 +38,27 @@
 #       - name: Second job message
 #         run: echo "Job 2 running after Job 1"
 
+# name: use action workflow
+
+# on: 
+#   push:
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: List files
+#         run: ls
+
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+        
+#       - name: Print Node version
+#         run: node -v
 name: use action workflow
 
 on: 
@@ -56,6 +77,12 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        
+
       - name: Print Node version
         run: node -v
+
+      - name: Install dependency
+        run: npm install
+
+      - name: Starting test
+        run: npm run test
